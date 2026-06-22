@@ -10,7 +10,7 @@ The application is packaged as a Docker image, stored in Amazon Elastic Containe
 
 ## 🏗️ Architecture Diagram
 
-![Architecture Diagram](screenshots/architecture-diagram.png)
+![Architecture Diagram](architecture/architecture-diagram.png)
 
 ---
 
