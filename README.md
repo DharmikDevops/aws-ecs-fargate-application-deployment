@@ -2,11 +2,9 @@
 
 ## 📖 Project Overview
 
-This project demonstrates how to deploy a containerized web application on AWS using Amazon Elastic Container Registry (ECR) and Amazon Elastic Container Service (ECS) with AWS Fargate.
+This project demonstrates how to deploy a containerized web application on Amazon ECS Fargate using Docker, Amazon ECR, and an Application Load Balancer (ALB).
 
-The application was containerized using Docker, stored in Amazon ECR, and deployed as an ECS Fargate task behind an Application Load Balancer (ALB). A new version of the application was created, pushed to ECR, and deployed through ECS to demonstrate container image versioning and application updates.
-
-This project provides hands-on experience with containerization, image repositories, serverless container orchestration, and application deployment on AWS.
+The application is packaged as a Docker image, stored in Amazon Elastic Container Registry (ECR), and deployed as a serverless container on Amazon ECS Fargate. The project also demonstrates application version updates by deploying Version 2 of the application from a new Docker image.
 
 ---
 
@@ -16,73 +14,104 @@ This project provides hands-on experience with containerization, image repositor
 
 ---
 
-## 🔄 Application Flow
+## ⚙️ Architecture Flow
 
-1. User sends an HTTP request through a web browser.
+1. User sends an HTTP request from a web browser.
 2. Application Load Balancer (ALB) receives the request.
-3. ALB routes the request to the Amazon ECS Service.
-4. Amazon ECS Service ensures the required ECS task is running.
-5. The ECS Task running on AWS Fargate hosts the containerized web application.
-6. The ECS Task pulls the latest application image (v2) from Amazon ECR.
-7. The application processes the request and returns the response to the user.
+3. ALB forwards the request to the Amazon ECS Service.
+4. ECS Service manages and maintains the running ECS Task.
+5. ECS Task runs the containerized web application on AWS Fargate.
+6. The ECS Task pulls the latest Docker image from Amazon ECR.
+7. The application response is returned to the user through the ALB.
 
 ---
 
-## ☁️ AWS Services Used
+## 🛠️ AWS Services Used
 
-- **Amazon ECS (Elastic Container Service)** – Container orchestration service used to run the application.
-- **AWS Fargate** – Serverless compute engine for running containers without managing servers.
-- **Amazon ECR (Elastic Container Registry)** – Stores Docker container images.
-- **Application Load Balancer (ALB)** – Distributes incoming traffic to the ECS tasks.
-- **Amazon VPC** – Provides networking for ECS resources.
+- Amazon ECS (Elastic Container Service)
+- AWS Fargate
+- Amazon Elastic Container Registry (ECR)
+- Application Load Balancer (ALB)
+- Amazon VPC
+- AWS IAM
+
+---
+
+## 🎯 Project Objectives
+
+- Build and containerize a web application using Docker.
+- Store Docker images in Amazon ECR.
+- Deploy containers using Amazon ECS Fargate.
+- Expose the application using an Application Load Balancer.
+- Demonstrate application version updates using image tags.
+- Understand the complete container deployment workflow on AWS.
 
 ---
 
 ## 📸 Project Screenshots
 
-### Docker Image Build
+### Amazon ECR Repository
 
-![Docker Build](screenshots/docker-image-build.png)
+Docker images stored in Amazon Elastic Container Registry.
 
-### Docker Image Pushed to Amazon ECR
-
-![ECR Repository](screenshots/ecr-image-push.png)
-
-### ECS Service Deployment
-
-![ECS Service](screenshots/ecs-service-deployment.png)
-
-### Application Load Balancer
-
-![Application Load Balancer](screenshots/application-load-balancer.png)
-
-### Version 2 Application Deployment
-
-![Application Version 2](screenshots/application-v2-deployment.png)
+![ECR Repository](screenshots/ecr-repository.png)
 
 ---
 
-## 🎯 Project Outcome
+### ECS Cluster Overview
 
-- Successfully containerized a web application using Docker.
-- Stored and managed container images in Amazon ECR.
-- Deployed the application on Amazon ECS using AWS Fargate.
-- Configured an Application Load Balancer to route user traffic.
-- Demonstrated container image versioning by deploying application version v2.
-- Validated successful application deployment through the ALB endpoint.
-- Gained practical experience with container-based application deployment on AWS.
+Amazon ECS Cluster running the application service.
+
+![ECS Cluster](screenshots/ecs-cluster-overview.png)
+
+---
+
+### ECS Service Health
+
+Healthy ECS service with a running task and successful deployment.
+
+![ECS Service Health](screenshots/ecs-service-health.png)
+
+---
+
+### Application Load Balancer
+
+Application Load Balancer routing traffic to the ECS service.
+
+![Application Load Balancer](screenshots/application-load-balancer.png)
+
+---
+
+### Initial Deployment (Version 1)
+
+First version of the application deployed successfully using ECS Fargate.
+
+![Application Version 1](screenshots/application-output-v1.png)
+
+---
+
+### Updated Deployment (Version 2)
+
+A new Docker image was pushed to Amazon ECR and deployed through Amazon ECS, demonstrating application version updates.
+
+![Application Version 2](screenshots/application-output-v2.png)
 
 ---
 
 ## 📚 Key Learnings
 
-- Understanding Docker image creation and containerization concepts.
-- Managing container images using Amazon ECR.
-- Creating and configuring Amazon ECS clusters, task definitions, services, and tasks.
-- Deploying serverless containers using AWS Fargate.
-- Integrating ECS services with an Application Load Balancer.
-- Updating applications using container image versioning.
-- Understanding how ECS services maintain the desired number of running tasks.
-- Learning the end-to-end workflow of deploying containerized applications on AWS.
+- Containerizing applications using Docker.
+- Managing container images with Amazon ECR.
+- Deploying containers without managing servers using AWS Fargate.
+- Understanding ECS Clusters, Services, Task Definitions, and Tasks.
+- Configuring Application Load Balancers for containerized applications.
+- Performing application updates through new Docker image versions.
+- Understanding the end-to-end container deployment lifecycle on AWS.
+
+---
+
+## ✅ Project Outcome
+
+Successfully deployed a containerized web application on Amazon ECS Fargate using Docker images stored in Amazon ECR and exposed through an Application Load Balancer. The project also demonstrated updating the application by deploying a newer container image version.
 
 ---
